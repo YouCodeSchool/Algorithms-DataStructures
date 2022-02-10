@@ -20,20 +20,39 @@ class List{
       this.next = null;
       this.previous = previous;
     }
-    addNode(nextNode){
+    addNextTo(nextNode){
       this.next = nextNode;
       nextNode.next = null;
       nextNode.previous = this;
     }
+    // addAtFirst(){
+    //   let searchHead = this.previous;
+    //   let addBefore; 
+    //   while(searchHead != null){
+    //     addBefore = searchHead;
+    //     searchHead = searchHead.previous;
+    //   }
+    //   addBefore.previous = this;
+    //   firstNode.next = addBefore;
+    // }
+    
+    addAtFirst(head){
+      this.next = head;
+    }
+
     deleteNext(){
       this.next.previous = this;
       this.next = this.next.next;
     }
+   
+
   }
   
   let node1 = new Node(40);
   let node2 = new Node(78);
-  
+  let node3 = new Node("HELLO FROM NODE 3");
+  let node0 = new Node("HELLO SPACE NODE 4");
+
   let linkedList = new List(node1);
   
   // node1.previous = linkedList;
@@ -44,11 +63,17 @@ class List{
   // console.log(linkedList.head.next)
   // console.log(linkedList.head.next.data)
 
-  node1.addNode(node2);
+  node1.addNextTo(node2);
+  node2.addNextTo(node3);
   // console.log(node1.next.data);
   // console.log(node1.next.previous);
-  node1.deleteNext();  //deletes node2 from the list
-  console.log(node1.next);
-  console.log(node2);
+  // node1.deleteNext();  //deletes node2 from the list
+  // console.log(node1.next);
+  // console.log(node2);
 
   
+  node0.addAtFirst(linkedList.head);
+  console.log(node0.data);
+  console.log(node0.previous);
+  console.log(node0.next.data);
+  console.log(node0.next.next.data);
