@@ -1,5 +1,5 @@
 // FUNCTIONS TO IMPLEMENT FOR LINKED LISTS : 
-  // ADDATFIRST, ADDATLAST, ADDAT, REMOVEAT, SIZE, ISEMPTY, REMPLACE, SORT, SEARCH, CLEAR, REVERSE, INDEXOFELEMENT, GETLAST, GETLAST, GETAT
+  // ADDATFIRST, ADDATLAST, ADDAT, REMOVEAT, SIZE, ISEMPTY, REMPLACE, SORT, SEARCH, CLEAR, REVERSE, INDEXOFELEMENT, GETLAST, GETLAST, GETAT, Display
 
 
 
@@ -9,16 +9,31 @@
 
 
 
-class List{
-    constructor(head = null){
-      this.head = head;
+  class List{
+      constructor(head = null){
+        this.head = head;
+      }
     }
-  }
   class Node {
-    constructor (data, previous = null){
+    constructor (data, previous = null, order= null){
       this.data = data;
       this.next = null;
       this.previous = previous;
+      this.order = order;
+      if(order != null){
+        this.addAt(order);
+      }
+      
+    }
+    addAt(order){
+      if(this.next == null && this.previous == null){
+        return;
+      } else if (this.next == null) {
+        while(this.previous.order != order){
+          ,
+        }
+      
+      } 
     }
     addNextTo(nextNode){
       this.next = nextNode;
@@ -40,18 +55,29 @@ class List{
       this.next = head;
     }
 
+    addAtLast(anyNode){
+      while(anyNode.next != null){
+        anyNode = anyNode.next;
+      }
+      anyNode.next = this;
+      this.previous = anyNode;
+      this.next = null;
+    }
+
     deleteNext(){
       this.next.previous = this;
       this.next = this.next.next;
     }
    
-
   }
   
   let node1 = new Node(40);
   let node2 = new Node(78);
   let node3 = new Node("HELLO FROM NODE 3");
-  let node0 = new Node("HELLO SPACE NODE 4");
+  let node0 = new Node("HELLO SPACE NODE 4 fIRST NODE");
+
+  let nodeLast = new Node("Added as Last node on the list");
+
 
   let linkedList = new List(node1);
   
@@ -71,9 +97,19 @@ class List{
   // console.log(node1.next);
   // console.log(node2);
 
-  
+ //Add at first this node 
   node0.addAtFirst(linkedList.head);
-  console.log(node0.data);
-  console.log(node0.previous);
-  console.log(node0.next.data);
-  console.log(node0.next.next.data);
+
+  // console.log(node0.data);
+  // console.log(node0.previous);
+  // console.log(node0.next.data);
+  // console.log(node0.next.next.data);
+
+  
+  //Add node on list end
+  nodeLast.addAtLast(linkedList.head);
+  console.log(nodeLast.next);
+  console.log(nodeLast.previous);
+  console.log(nodeLast);
+
+
