@@ -49,6 +49,10 @@ class Stack {
             return false
         }
     }
+
+    traverse(){
+        this.elements.forEach(elem => console.log(elem))
+    }
 }
 
 // const stack = new Stack(4,1)
@@ -68,3 +72,4 @@ stack.peek()
 // console.log(stack.isEmpty())
 // stack.isEmpty()
 stack.size()
+// stack.traverse()
