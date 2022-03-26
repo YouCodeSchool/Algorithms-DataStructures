@@ -3,8 +3,12 @@ class Stack {
     elements = []
     // count = 0
 
-    constructor(element = []){   
-            this.elements.push(element)
+    constructor(element){  
+        if(element !== undefined) {
+            // this.elements.push(element)
+            this.push(element)
+        }
+            
     }
 
     getValue() {
@@ -32,6 +36,7 @@ class Stack {
     }
 
     size(){
+        console.log(this.elements.length)
         return this.elements.length
     }
 
@@ -46,7 +51,8 @@ class Stack {
     }
 }
 
-const stack = new Stack(4,1)
+// const stack = new Stack(4,1)
+const stack = new Stack()
 
 stack.push(40, 1)
 stack.push(48, 1)
@@ -60,4 +66,5 @@ stack.peek()
 // stack.display()
 
 // console.log(stack.isEmpty())
-stack.isEmpty()
+// stack.isEmpty()
+stack.size()
