@@ -15,26 +15,57 @@
       }
     }
   class Node {
-    constructor (data, previous = null, order= null){
+    constructor (data, previous = null, index= null){
       this.data = data;
       this.next = null;
       this.previous = previous;
-      this.order = order;
+      this.index = index;
       if(order != null){
-        this.addAt(order);
+        this.addAt(index);
       }
       
     }
-    addAt(order){
+    addAt(index){
+      let node = this;
       if(this.next == null && this.previous == null){
         return;
-      } else if (this.next == null) {
-        while(this.previous.order != order){
-          ,
+      } else if (this.next == null ) {
+        while(node.previous.index != index){
+          node = node.previous;
         }
-      
-      } 
+        //Choose add before this node or after node (call addAfterThis function)
+        //this.addAfterThis(node.previous)
+        this.addBeforeThis(node.previous);
+      } else if (this.previous == null){
+        while(node.next.index != index){
+          node = node.next;
+        }
+        //this.addAfterThis(node.next)
+        this.addBeforeThis(node.next);
+      } else {
+        if(node.index == index) {
+          this.addBeforeThis(node);  //this.addAfterThis(node.next)
+        } else if (node.index > index){
+          while(node.next.index != index){
+            node = node.next;
+          }
+        }
+       
+      }
+
     }
+
+    addBeforeThis(node){
+      this.next = node;
+      this.previous = node.previous;
+      node.previous = this;
+    }
+    addAfterThis(node){
+      this.previous = node;
+      this.next = node.next;
+      node.next = this;
+    }
+
     addNextTo(nextNode){
       this.next = nextNode;
       nextNode.next = null;
