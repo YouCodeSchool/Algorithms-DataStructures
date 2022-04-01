@@ -1,5 +1,6 @@
 class Queue {
     elements = []
+    
     constructor(obj){
         if(obj !== undefined){
             this.enqueue(obj)

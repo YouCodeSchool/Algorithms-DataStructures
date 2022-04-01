@@ -12,7 +12,7 @@ function rotateMatrix(mtrx){
         for(let j = length; j > 0; j--){
             arr.push(mtrx[j - 1][i]);
         }
-        // console.log(arr)
+
         newMtrx.push(arr)
         // arr1.push(mtrx[i - 1 ][0])
         // arr2.push(mtrx[i - 1 ][1])
