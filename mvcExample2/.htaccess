@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+<IfModule mod_rewrite.c>
+
+   RewriteEngine on
+
+   RewriteRule ^$ public/ [L]
+   RewriteRule (.*) public/$1 [L]
+
+</IfModule>
+=======
+Options -Indexes
+>>>>>>> 02a1a7346a29720159a2098ee2c2c6f02b5a9d49
